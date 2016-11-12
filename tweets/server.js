@@ -3,6 +3,7 @@ var request = require("request");
 var fs      = require('fs');
 
 var Data = function(){
+  this.id;
   this.user_name;
   this.tweet;
   this.country;
@@ -27,20 +28,20 @@ var options = {
 }
 
 var bot = new Twit(options);
-bot.get("search/tweets", {q:'emissions', count: 10}, function(error,data,response){  
-  
+bot.get("search/tweets", {q:'politics', count: 10000}, function(error,data,response){  
+  if (error) console.log(error);
   for(var result in data.statuses){
-    var text = data.statuses[result].text;
-    var user_name = data.statuses[result].user.name;
-
-    var location = data.statuses[result].user.location;
     if (location){
-      createData(location, text, user_name)
+      var tweetId = data.statuses[result].id;
+      var text = data.statuses[result].text;
+      var user_name = data.statuses[result].user.name;
+      var location = data.statuses[result].user.location;
+      createData(location, text, user_name, tweetId)
     }
   }
 });
 
-function createData(location, text, user_name){
+function createData(location, text, user_name, tweetId){
   
   var url = "https://maps.google.com/maps/api/geocode/json?address=" + location + "&sensor=false";
 
@@ -49,12 +50,14 @@ function createData(location, text, user_name){
       json: true
   }, 
   function (error, response, body) {
+    if (error) console.log(error);
     if (!error && response.statusCode === 200) {
       if(body.status === "OK" ){
         for(var i=0; i<body.results[0].address_components.length; i++){
           if (body.results[0].address_components[i].types[0]==="country"){
             var country = body.results[0].address_components[i].short_name;
             var data = new Data();
+            data.id = tweetId;
             data.user_name = user_name;
             data.tweet = text;
             data.country = country;
@@ -63,7 +66,7 @@ function createData(location, text, user_name){
             objects.push(data);
             fs.writeFile('output/' + date+'.json', JSON.stringify(objects, null, 4), function(err){
               if (err) console.log(err);
-              else console.log('File successfully written! - Check your project directory for the file');
+              // else console.log('File successfully written! - Check your project directory for the file');
             })
           }
         }
