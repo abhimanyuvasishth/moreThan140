@@ -40,3 +40,22 @@ app.get('/subscribe', function(req, res, err){
 })
 
 
+app.get('/comments', function(req, res, err){
+  if(err)
+    console.log(err);
+
+  var obj = JSON.parse(fs.readFileSync('public/data/comments.json'));
+
+  fs.writeFile('public/data/comments.json', JSON.stringify(obj), function(err){
+    if(err)
+      throw err;
+    else{
+      console.log('Displaying the data');
+      // res.setHeader("Content-Type", "application/json");
+      res.json(obj);
+      res.end();
+    }
+  });
+})
+
+

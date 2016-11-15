@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-color: #FAFAFA;
+    background-color: #FFF;
     height:100%;
 }
 
@@ -54,8 +54,8 @@ h1{
 }
 
 .comment{
-	padding: 10px;
-	margin-right: 6%;
+	margin-left: 2%;
+	margin-right: 2%;
 	background-color: #EEE;
     font-family: Open Sans;
     font-weight: 100px;
@@ -63,6 +63,7 @@ h1{
 
 .padding{
 	padding-top: 20px;
+	background-color: #FFF;
 }
 
 .commentBox{
@@ -70,6 +71,6 @@ h1{
 
 }
 
-#date{
+#name{
 	font-size: 14px;
 }

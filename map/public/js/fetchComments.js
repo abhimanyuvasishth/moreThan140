@@ -1,3 +1,28 @@
+$( document ).ready( comments() )
+function comments(){
+
+  $.ajax({
+    url: "/comments",
+    type: "GET",
+    datatype: "json"
+  }).done(function(json){
+    for(var i=json.length-1; i>=0; i--){
+      $("#confirmation").append("<div class='comment'>"+
+        "<p id='text'>"+json[i].text+"</p>"+
+        "<p id='name'>"+"By "+json[i].name+" on "+json[i].date+"</p>"+
+        "<div class='padding'></div>"+
+        "</div>");
+    }
+
+  }).fail(function(xhr, status, error){
+    console.log( "Error: " + errorThrown );
+    console.log( "Status: " + status );
+    console.dir( xhr );
+  });
+}
+
+
+
 function subscribe(){
 
   var _name = $("#name").val();
@@ -19,12 +44,12 @@ function subscribe(){
     $("#name").val("");
     $("#text").val("");
     var resp = 'thank you';
+    $( ".comment" ).remove();
 
-    for(var i=0; i<json.length; i++){
+    for(var i=json.length-1; i>=0; i--){
       $("#confirmation").append("<div class='comment'>"+
         "<p id='text'>"+json[i].text+"</p>"+
-        "<p id='name'>"+json[i].name+"</p>"+
-        "<p id='date'>"+json[i].date+"</p>"+
+        "<p id='name'>"+"By "+json[i].name+" on " + json[i].date+"</p>"+
         "<div class='padding'></div>"+
         "</div>");
     }
@@ -36,3 +61,4 @@ function subscribe(){
     console.dir( xhr );
   });
 }
+
