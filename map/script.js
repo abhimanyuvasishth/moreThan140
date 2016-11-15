@@ -32,12 +32,26 @@ function drawMap(){
         },
         done: function(basic_choropleth) {
             basic_choropleth.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
-                console.log(geography.properties.name);
+                // console.log(geography.properties.name);
                 for (i in data){
                     if (geography.id == data[i]["alpha-3"]){
-                        console.log(all_countries[data[i]["name"]] || "none");
-                        console.log(all_countries[data[i]["alpha-3"]] || "none");
-                        console.log(all_countries_tweets[data[i]["alpha-3"]] || "none");
+                        // console.log(all_countries[data[i]["name"]] || "none");
+                        // console.log(all_countries[data[i]["alpha-3"]] || "none");
+                        // console.log(all_countries_tweets[data[i]["alpha-3"]] || "none");
+                        if (all_countries[data[i]["alpha-3"]] > 0){
+                            var tweetArray = all_countries_tweets[data[i]["alpha-3"]];
+                            $('#tweets').text("");       
+                            for (j in tweetArray){
+                                $('#tweets').append(tweetArray[j] + '<br>');
+                                $('#tweets').append('<br>');
+                                if (j == 9) break;
+                            }
+                            $('#tweets').show();  
+                        }
+                        else {
+                            $('#tweets').text("");       
+                            $('#tweets').hide();
+                        }
                     }
                 }
             });
@@ -46,14 +60,14 @@ function drawMap(){
 }
 
 function convertToHex(number){
-    number = Math.round(150-(150/max)*number)+50;
+    number = Math.round(200-(200/max)*number)+25;
     var hex = number.toString(16);
     var hexStr = "#00";
     if (number <= 16){
         hexStr += "0";
     }   
     hexStr += hex;
-    hexStr += "00";
+    hexStr += "10";
     return hexStr;
 }
 
@@ -105,9 +119,15 @@ $(document).ready(function() {
     getData(function(){
         colorCountries();
     });
+    $('#tweets').hide();
 });
 
 // Resize
 $(window).on('resize', function() {
    basic_choropleth.resize();
+   $('#tweets').hide();
+});
+
+$("#tweets").click(function() {
+   console.log("f");
 });

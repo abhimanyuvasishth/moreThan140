@@ -43,7 +43,7 @@ var date = day+ '' + month+ '' +year;
 var nice_date = day+ '/' + month+ '/' +year;
 var oldM = -10;
 
-var file = 'output/141120160.json';
+var file = 'output/cat.json';
 var combinations = [];
 
 function makeCombinations(){

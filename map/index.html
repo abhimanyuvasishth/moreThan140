@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <title>Map</title>
-    
+    <title>#moreThan140</title>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
@@ -13,29 +13,32 @@
     <script src ="data/data.js"></script>
     <script src ="data/tweets.js"></script>
     <script src ="script.js"></script>
-    <script type="text/babel" src ="createComment.js"></script>
 
+    <script type="text/babel" src ="createComment.js"></script>
     <script src="react/react.js"></script>
     <script src="react/react-dom.js"></script>
     <script src="react/browser.min.js"></script>
+    <link rel="stylesheet" href="https://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
 
   </head>
 
   <body>
-
     <div class="title">
-      <h1 >More than 140</h1>
-      <p id="grey">Share you opinion without being restricted to 140 characters.</p>      
-      <h3>Today's topic: Health and Poverty</h3>      
-
+      <h1>#moreThan140</h1>
+      <p id="grey">Because important discussions need more than 140 characters.</p>      
+      <h3>Today's topic: Health and Poverty 
+      <h4>Today in the UN: Rehabilitating drylands key to global food security</h4>      
     </div>
 
-    <div id="container"></div>
+    <div id="mapContainer">
+      <div id="tweets"></div>
+      <!-- <div id="tweetsMask"></div> -->
+      <div id="container"></div>
+    </div>
     <div id="app"></div>
 
   </body>
-
 </html>
