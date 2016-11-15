@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <title>Map</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+    <script src="data/datamaps.world.min.js"></script>
+
+    <script src ="data/data.js"></script>
+    <script src ="js/script.js"></script>
+<!--     <script type="text/babel" src ="createComment.js"></script>
+ -->
+   <!--  <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/browser.min.js"></script>
+ -->
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/fetchComments.js"></script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="title">
+      <h1 >More than 140</h1>
+      <p id="grey">Share you opinion without being restricted to 140 characters.</p>      
+      <h3>Today's topic: Health and Poverty</h3>      
+
+    </div>
+
+    <div id="container"></div>
+    <div id="app"></div>
+    <div class="commentBox">
+        <div class="pure-form pure-g" >
+          
+           <div class="pure-u-1-8">
+              <input class="pure-input-1" id="name" type="text" placeholder="Name"  />
+          </div>
+          <div class="pure-u-3-4">
+              <input class="pure-input-1" id="text" type="text" placeholder="Leave your comment" />
+          </div>
+            
+            <input class="pure-button" type="submit" value="Submit" onclick="subscribe()" />
+        </div>
+
+            <div class="padding"></div>
+
+            <div class="padding"></div>
+            <div class="padding"></div>
+
+      </div>
+      <div id="confirmation"></div>
+  </body>
+
+</html>
