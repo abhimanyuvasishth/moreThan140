@@ -10,7 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express"    : "latest",
+    "jsonfile": "^2.4.0",
+    "natural": "^0.4.0",
     "requests": "^0.1.7",
+    "stopword": "^0.1.1",
     "twit": "^2.2.5"
   }
 }
